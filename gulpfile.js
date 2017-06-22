@@ -1,3 +1,9 @@
+/**
+ *  In work mode set index to reference main.js.
+ *  When complete, run gulp compress then set Index.html
+ *    to reference
+ */
+
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
 var pump = require('pump');
@@ -33,7 +39,7 @@ gulp.task('compress', function() {
 
 //clean extra files
 gulp.task('clean', function() {
-  return del.sync(d+'main.min.js');
+  return del.sync(d+'/main.min.js');
 })
 
 // clear local cache
@@ -46,7 +52,7 @@ gulp.task('watch', ['clean', 'compress', 'browserSync'], function (){
   // Reloads the browser whenever HTML or JS files change
   gulp.watch( d+'/*.css', browserSync.reload);
   gulp.watch( d+'/*.html', browserSync.reload);
-  gulp.watch( d+'/*.js', browserSync.reload);
+  gulp.watch( d+'/js/*.js', browserSync.reload);
 });
 
 gulp.task('default', function (callback) {
